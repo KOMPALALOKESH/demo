@@ -1,5 +1,12 @@
 # E-Commerce Platform with JWT Authentication
-
+<img width="1090" height="761" alt="image" src="https://github.com/user-attachments/assets/502417b2-95e9-48b6-a0e5-dff7e3939646" />
+<img width="1093" height="482" alt="image" src="https://github.com/user-attachments/assets/02274c4d-ae0a-435e-b189-926b35d9dd4b" />
+<img width="1090" height="731" alt="image" src="https://github.com/user-attachments/assets/8e38d730-4fd3-4717-ad0d-579f937c9364" />
+<img width="1090" height="683" alt="image" src="https://github.com/user-attachments/assets/4eca127e-54a4-4fce-929d-a61897b26eba" />
+<img width="1090" height="841" alt="image" src="https://github.com/user-attachments/assets/8d922cce-d861-4115-b96d-3a50e85d5867" />
+<img width="1090" height="736" alt="image" src="https://github.com/user-attachments/assets/d97a5cae-dfdd-4a34-9178-879f5c944b75" />
+<img width="1090" height="664" alt="image" src="https://github.com/user-attachments/assets/e0159d8a-f319-4288-84a6-96800bb67bca" />
+<img width="1447" height="750" alt="image" src="https://github.com/user-attachments/assets/49005461-78e0-4db6-b876-b84b0709c921" />
 ## Technology Stack
 
 - **Backend Framework**: Spring Boot 3.5.7
