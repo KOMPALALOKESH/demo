@@ -10,10 +10,14 @@ import com.example.demo.model.Product;
 @Repository
 public interface ProductRepo extends JpaRepository<Product, Integer> {
 
+    public Product findByProductName(String productName);
+
     public List<Product> findByProductNameContainingIgnoreCase(String keyword);
 
     public List<Product> findByCategory_CategoryName(String keyword);
 
     public List<Product> findBySeller_Username(String Username);
+
+    public Product findByProductId(Integer productId);
 
 }

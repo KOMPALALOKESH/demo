@@ -31,7 +31,7 @@ public class Product {
     @Column(name = "price")
     private Double price;
 
-    // A product is sold by a single user (seller). Use ManyToOne: many products -> one user.
+    // A product is sold by a single user (seller). Use ManyToOne: many products -> one seller.
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "seller_id")
     private User seller;

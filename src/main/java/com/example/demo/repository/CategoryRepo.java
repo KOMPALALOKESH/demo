@@ -7,4 +7,6 @@ import com.example.demo.model.Category;
 @Repository
 public interface CategoryRepo extends JpaRepository<Category, Integer> {
 
+    public Category findByCategoryName(String categoryName);
+
 }

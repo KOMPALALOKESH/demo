@@ -2,18 +2,18 @@ package com.example.demo.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.example.demo.dto.RoleDTO;
+import com.example.demo.dto.UserDTO;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepo;
 
-import lombok.extern.slf4j.Slf4j;
-
 @RestController
-@Slf4j
 @RequestMapping("/auth/admin")
 public class AdminController {
 
@@ -21,18 +21,21 @@ public class AdminController {
     private UserRepo userRepo;
 
     @GetMapping("/consumers")
-    public ResponseEntity<List<User>> getAllConsumers() {
-        System.out.println("Fetching all consumers...");
-        log.info("start: fetching all customers..");
+    public ResponseEntity<List<UserDTO>> getAllConsumers() {
         List<User> consumers = userRepo.findByRole_RoleName("CONSUMER");
-        log.info("end: fetching all customers.");
-        return ResponseEntity.status(200).body(consumers);
+        List<UserDTO> consumerDTOs = consumers.stream()
+                .map(this::convertToUserDTO)
+                .collect(Collectors.toList());
+        return ResponseEntity.status(200).body(consumerDTOs);
     }
 
     @GetMapping("/sellers")
-    public ResponseEntity<List<User>> getAllSellers() {
-        List<User> sellers = userRepo.findByRole_RoleName("ROLE_SELLER");
-        return ResponseEntity.status(200).body(sellers);
+    public ResponseEntity<List<UserDTO>> getAllSellers() {
+        List<User> sellers = userRepo.findByRole_RoleName("SELLER");
+        List<UserDTO> sellerDTOs = sellers.stream()
+                .map(this::convertToUserDTO)
+                .collect(Collectors.toList());
+        return ResponseEntity.status(200).body(sellerDTOs);
     }
 
     @DeleteMapping("/consumer/{username}")
@@ -44,8 +47,8 @@ public class AdminController {
         }
 
         User user = userOptional.get();
-        if (!"ROLE_CONSUMER".equals(user.getRole().getRoleName())) {
-            return ResponseEntity.status(403).build(); // Forbidden if not consumer
+        if (!"CONSUMER".equals(user.getRole().getRoleName())) {
+            return ResponseEntity.status(403).build(); 
         }
 
         userRepo.delete(user);
@@ -62,12 +65,25 @@ public class AdminController {
         }
 
         User user = userOptional.get();
-        if (!"ROLE_SELLER".equals(user.getRole().getRoleName())) {
+        if (!"SELLER".equals(user.getRole().getRoleName())) {
             return ResponseEntity.status(403).build();
         }
 
         userRepo.delete(user);
         return ResponseEntity.status(200).build();
+    }
+
+    private UserDTO convertToUserDTO(User user) {
+        RoleDTO roleDTO = new RoleDTO(
+            user.getRole().getRoleId(),
+            user.getRole().getRoleName()
+        );
+        return new UserDTO(
+            user.getUserId(),
+            user.getUsername(),
+            user.getPassword(),
+            roleDTO
+        );
     }
 
 }

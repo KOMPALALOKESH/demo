@@ -35,9 +35,9 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/v3/api-docs/**","/swagger-ui/**","/swagger-ui.html","/public/**").permitAll()
-                .requestMatchers("/api/auth/consumer/**").hasRole("CONSUMER")
-                .requestMatchers("/api/auth/seller/**").hasRole("SELLER")
-                .requestMatchers("/api/auth/admin/**").hasRole("ADMIN")
+                .requestMatchers("/auth/consumer/**").hasRole("CONSUMER")
+                .requestMatchers("/auth/seller/**").hasRole("SELLER")
+                .requestMatchers("/auth/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
             )
             .sessionManagement(sesssion -> sesssion.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

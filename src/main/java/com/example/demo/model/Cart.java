@@ -2,6 +2,8 @@ package com.example.demo.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,6 +38,7 @@ public class Cart {
     private User user;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cart")
+    @JsonManagedReference
     private List<CartProduct> cartProducts;
     
 
