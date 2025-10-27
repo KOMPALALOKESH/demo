@@ -6,7 +6,7 @@
 <img width="1090" height="841" alt="image" src="https://github.com/user-attachments/assets/8d922cce-d861-4115-b96d-3a50e85d5867" />
 <img width="1090" height="736" alt="image" src="https://github.com/user-attachments/assets/d97a5cae-dfdd-4a34-9178-879f5c944b75" />
 <img width="1090" height="664" alt="image" src="https://github.com/user-attachments/assets/e0159d8a-f319-4288-84a6-96800bb67bca" />
-<img width="1447" height="750" alt="image" src="https://github.com/user-attachments/assets/49005461-78e0-4db6-b876-b84b0709c921" />
+
 ## Technology Stack
 
 - **Backend Framework**: Spring Boot 3.5.7
